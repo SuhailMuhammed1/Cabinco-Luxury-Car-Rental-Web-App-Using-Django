@@ -1,1 +1,1 @@
-# Cabinco-Luxury-Car-Rental-Web-Application-Using-Django
+# Cabinco - Luxury Car Rental Web App Using Django
