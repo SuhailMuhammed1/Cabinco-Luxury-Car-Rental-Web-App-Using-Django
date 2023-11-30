@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CabinCo</title>
+
+  <!-- ? ==================== FAVICON ==================== ? -->
+
+  <link rel="shortcut icon" href="/static/images/faviccoonn.PNG" type="image/x-icon">
+
+  <!-- ? ==================== CUSTOM CSS ==================== ? -->
+
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <!-- ? ==================== GOOGLE FONTS ==================== ? -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<style>
+  .notification {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #d6be83;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  animation: fadeOut 1000s ease-in-out;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+</style>
+
+<body>
+  <div id="preloader" class="preloader">
+		<div class='inner'>
+			<div class='line1'></div>
+			<div class='line2'></div>
+			<div class='line3'></div>
+		</div>
+	</div>
+
+  <!-- ? ============== HEADER ============== ? -->
+
+  <header class="header" data-header>
+    <div class="container">
+      <div class="overlay" data-overlay></div>
+      <a href="/" class="logo">
+        <img src="/static/images/cabinco.png" alt="Cabinco Logo" width="200px" height="200px">
+      </a>
+
+      <nav class="navbar" data-navbar>
+        <ul class="navbar-list">
+          <li>
+            <a href="#" class="navbar-link" data-nav-link>Home</a>
+          </li>
+
+          <li>
+            <a href="#footer" class="navbar-link" data-nav-link>About us</a>
+          </li>
+
+          <li>
+            <a href="#services" class="navbar-link" data-nav-link>Services</a>
+          </li>
+
+          <li>
+            <a href="#contact" class="navbar-link" data-nav-link>Contact us</a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- <div class="header-contact">
+                    <a href="tel:1234567890" class="contact-link">1234567890</a>
+                    <span class="contact-time">Mon - Fri: 9:00 am - 6:00 pm</span>
+                  </div> -->
+
+        <a href="#featured-car" class="btn" aria-labelledby="">
+          <ion-icon name="car-outline"></ion-icon>
+
+          <span class="aria-label-text">Explore cars</span>
+        </a>
+
+        <a href="yournumber" class="btn1 whatsapp-btn" aria-label="WhatsApp">
+          <ion-icon name="logo-whatsapp"></ion-icon>
+        </a>
+
+        <button class="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
+          <span class="one"></span>
+          <span class="two"></span>
+          <span class="three"></span>
+        </button>
+      </div>
+    </div>
+
+  </header>
+
+
+  <!-- ? ============== MAIN ============== ? -->
+  <main>
+    <article>
+
+      <!-- ? ============== HERO ============== ? -->
+
+      <section class="section hero" id="home">
+
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="h1 hero-title">Experience Cabinco Your Premium UAE Limousine Partner</h1>
+
+            <p class="hero-text">
+              Discover luxury with Cabinco – your best UAE limousine choice, <br> Travel in style across the Emirates.
+            </p>
+          </div>
+
+          <br>
+
+          <!-- <div class="hero-banner"></div> -->
+
+          <form action="yournumber" class="hero-form1">
+            
+
+            <button type="submit" class="btn">Book Now</button>
+
+          </form>
+
+        </div>
+      </section>
+
+      <!-- ? ============== FEATURED CAR ============== ? -->
+
+      <section class="section featured-car" id="featured-car">
+        <div class="container">
+
+          <div class="title-wrapper">
+            <h2 class="h2 section-title">Featured cars</h2>
+
+            <!-- <a href="#" class="featured-car-link">
+                            <span>View more</span>
+          
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                          </a> -->
+          </div>
+
+          <ul class="featured-car-list">
+            {% for x in car %}
+            <li>
+
+              <div class="featured-car-card">
+
+                <figure class="card-banner">
+                  <img src="{{x.image.url}}" alt="{{x.name}}" loading="lazy" width="440" height="300" class="w-100">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-title-wrapper">
+                    <h3 class="h6 card-title">
+                      <a>{{x.name}}</a>
+                    </h3>
+
+                  </div>
+
+                  <ul class="card-list">
+
+                    <li class="card-list-item">
+                      <ion-icon name="people-outline"></ion-icon>
+
+                      <span class="card-item-text">{{x.people}} People</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="flash-outline"></ion-icon>
+
+                      <span class="card-item-text">{{x.fuel}}</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="briefcase-outline"></ion-icon>
+
+                      <span class="card-item-text">{{x.miles}} km/1-litre</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="hardware-chip-outline"></ion-icon>
+
+                      <span class="card-item-text">{{x.transmission}}</span>
+                    </li>
+
+                  </ul>
+
+                  <div class="card-price-wrapper">
+
+                    <p class="card-price">
+                      <strong></strong>
+                    </p>
+
+                    <a href="yournumber"><button class="btn fav-btn" aria-label="Add to favourite list">
+                        <ion-icon name="call"></ion-icon>
+                      </button></a>
+
+                    <a href="yournumber"><button class="btn">Book now</button></a>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+            </li>
+            {% endfor %}
+
+
+          </ul>
+        </div>
+      </section>
+
+      <!-- ? ============== Services ============== ? -->
+
+      <section class="section get-start" id="services">
+        <div class="container">
+          <h2 class="h2 section-title">Services</h2>
+
+          <ul class="get-start-list">
+            <li>
+              <div class="get-start-card">
+                <div class="card-icon icon-1">
+                  <ion-icon name="car"></ion-icon>
+                </div>
+
+                <h4 class="card-title">Chauffeur Services</h4>
+
+                <p class="card-text">
+                  Elevate your travel with our exclusive chauffeur-driven experiences.
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <div class="get-start-card">
+                <div class="card-icon icon-2">
+                  <ion-icon name="airplane"></ion-icon>
+                </div>
+
+                <h4 class="card-title">
+                  Airport Transfers
+                </h4>
+
+                <p class="card-text">
+                  Begin and end your journey with our dependable airport transfer solutions.
+                </p>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="get-start-card">
+                <div class="card-icon icon-3">
+                  <ion-icon name="car-outline"></ion-icon>
+                </div>
+
+                <h4 class="card-title">Inter Emirates Transfers</h4>
+
+                <p class="card-text">
+                  Connect across the Emirates effortlessly with our inter-city transportation.
+                </p>
+              </div>
+            </li>
+
+
+
+            <li>
+              <div class="get-start-card">
+                <div class="card-icon icon-4">
+                  <ion-icon name="People"></ion-icon>
+                </div>
+
+                <h4 class="card-title">Tours & Occasions</h4>
+
+                <p class="card-text">
+                  Curate unforgettable tours and celebrate special moments with our personalized services.
+                </p>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="get-start-card">
+                <div class="card-icon icon-4">
+                  <ion-icon name="car"></ion-icon>
+                </div>
+
+                <h4 class="card-title">Corporate Transportation</h4>
+
+                <p class="card-text">
+                  Impress your clients and partners with our sophisticated corporate travel options.
+                </p>
+
+              </div>
+
+            </li>
+
+            <li>
+              <div class="get-start-card">
+                <div class="card-icon icon-1">
+                  <ion-icon name="pin"></ion-icon>
+                </div>
+
+                <h4 class="card-title">Point-To-Point Travel</h4>
+
+                <p class="card-text">
+                  Seamlessly navigate your destinations with our efficien point-to-point travel.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ? ============== Contact Us ============== ? -->
+
+      <section class="section blog" id="contact">
+        <div class="container">
+          <div class="hero-content">
+            <h2 class="h2 section-title">Share Travel Experience With Us</h2>
+
+            <form action="/contact_us/" class="hero-form" method="post" id="contactForm" >
+              {% csrf_token %}
+              <div class="input-wrapper">
+                <label for="input-1" class="input-label">Name</label>
+                <input type="text" name="name" id="name" class="input-field" placeholder="" required>
+              </div>
+
+              <div class="input-wrapper">
+                <label for="input-2" class="input-label">Email</label>
+                <input type="email" name="email" id="input-2" class="input-field" placeholder="" required>
+              </div>
+
+              <div class="input-wrapper">
+                <label for="input-3" class="input-label">Feedback</label>
+                <input type="text" name="message" id="input-3" class="input-field" placeholder="" required>
+              </div>
+              {{ forms }}
+              <button type="submit" class="btn">Submit</button>
+            </form>
+            <script>
+              // JavaScript code to display the notification
+              document.addEventListener('DOMContentLoaded', function () {
+                  const contactForm = document.getElementById('contactForm');
+                  contactForm.addEventListener('submit', function () {
+                      displayNotification();
+                  });
+          
+                  function displayNotification() {
+                      const notification = document.createElement('div');
+                      notification.className = 'notification';
+                      notification.textContent = 'Thank you for contacting us! We will get back to you soon.';
+                      document.body.appendChild(notification);
+          
+                      setTimeout(function () {
+                          notification.style.opacity = '0';
+                          setTimeout(function () {
+                              notification.style.display = 'none';
+                          }, 1000);
+                      }, 5000);
+                  }
+              });
+          </script>
+          
+          </div>
+        </div>
+      </section>
+
+
+
+
+      <!-- ? ============== BLOG ============== ?  -->
+
+      <section class="section blog" id="blog">
+                    <div class="container">
+                      <h2 class="h2 section-title">Our Blog</h2>
+
+                      <ul class="blog-list has-scrollbar">
+                        <li>
+                          <div class="blog-card">                            
+                            <div class="card-content">
+                              <h3 class="h6 card-title">
+                               <center> <img src="/static/images/test1.png" style="width: 70px; height: 70px; border-radius: 50%; margin-right: 10px; vertical-align:top;margin-bottom: 10px;" alt="Profile Picture">
+                                <label style="color: black; display: inline-block;" onmouseover="this.style.color='#d6be83';" onmouseout="this.style.color='black';">Sarah May</label></center>
+                              </h3>
+                            
+                              <p>“I had the most incredible journey with Cabinco! The driver was punctual, the vehicle was spotless, and the ride was smooth. I felt safe and relaxed throughout the trip. Cabinco truly made my travel experience memorable.”</p>
+                              <br>
+                              <div class="card-meta">
+                                <div class="publish-date">
+                                  <ion-icon name="time-outline"></ion-icon>
+                                  <time datetime="2022-01-14">January 14, 2022 </time>
+                                </div>                            
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+
+                        <li>
+                          <div class="blog-card">                            
+                            <div class="card-content">
+                              <h3 class="h6 card-title">
+                                <center> <img src="/static/images/test2.png" style="width: 70px; height: 70px; border-radius: 50%; margin-right: 10px; vertical-align:top;margin-bottom: 10px;" alt="Profile Picture">
+                                <label style="color: black;" onmouseover="this.style.color='#d6be83';" onmouseout="this.style.color='black';">David Martinez</label></center>
+                              </h3>
+                              <p>“Cabinco exceeded my expectations. The driver was not only friendly but also knowledgeable about the local area, providing great recommendations. The convenience and comfort of Cabinco’s service made my trip stress-free.”</p>
+                              <br>
+                              <div class="card-meta">
+                                <div class="publish-date">
+                                  <ion-icon name="time-outline"></ion-icon>
+                                  <time datetime="2022-01-14">January 14, 2022 </time>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+
+                        <li>
+                          <div class="blog-card">                            
+                            <div class="card-content">
+                              <h3 class="h6 card-title">
+                                <center> <img src="/static/images/test5.png" style="width: 70px; height: 70px; border-radius: 50%; margin-right: 10px; vertical-align:top;margin-bottom: 10px;" alt="Profile Picture">
+                                  <label style="color: black;" onmouseover="this.style.color='#d6be83';" onmouseout="this.style.color='black';">Jackson</label></center>
+                              </h3>
+                              <p>“I used Cabinco for a family vacation, and it was a game-changer. The spacious vehicle accommodated my family comfortably, and the driver’s professionalism ensured a hassle-free trip. Cabinco is now our go-to transportation choice.”</p>
+                              <br>
+                              <div class="card-meta">
+                                <div class="publish-date">
+                                  <ion-icon name="time-outline"></ion-icon>
+                                  <time datetime="2022-01-14">January 14, 2022 </time>
+                                </div>                            
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+
+                        <li>
+                          <div class="blog-card">                            
+                            <div class="card-content">
+                              <h3 class="h6 card-title">
+                                <center> <img src="/static/images/test4.png" style="width: 70px; height: 70px; border-radius: 50%; margin-right: 10px; vertical-align:top;margin-bottom: 10px;" alt="Profile Picture">
+                                  <label style="color: black;" onmouseover="this.style.color='#d6be83';" onmouseout="this.style.color='black';">Mark Lee</label></center>
+                              </h3>
+                              <p>“Cabico made my business trip a breeze. The Wi-Fi onboard allowed me to stay connected, and the driver’s courtesy and punctuality were top-notch.</p>
+                                <p>I highly recommend Cabinco for any business traveler.”</p>
+                              <br>
+                              <div class="card-meta">
+                                <div class="publish-date">
+                                  <ion-icon name="time-outline"></ion-icon>
+                                  <time datetime="2022-01-14">January 14, 2022 </time>
+                                </div>                            
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+
+                        <li>
+                          <div class="blog-card">                            
+                            <div class="card-content">
+                              <h3 class="h6 card-title">
+                                <center> <img src="/static/images/test3.png" style="width: 70px; height: 70px; border-radius: 50%; margin-right: 10px; vertical-align:top;margin-bottom: 10px;" alt="Profile Picture">
+                                  <label style="color: black;" onmouseover="this.style.color='#d6be83';" onmouseout="this.style.color='black';">Lisa H</label></center>
+                              </h3>
+                              <p>“Traveling with Cabinco felt like a VIP experience. The luxury vehicle, attentive driver, and seamless booking process made my journey exceptional. I won’t hesitate to choose Cabinco for my future trips.”</p>
+                              <br>
+                              <br>
+                              <div class="card-meta">
+                                <div class="publish-date">
+                                  <ion-icon name="time-outline"></ion-icon>
+                                  <time datetime="2022-01-14">January 14, 2022 </time>
+                                </div>                            
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+
+                    </div>
+                  </section>
+               
+
+
+    </article>
+  </main>
+
+  <!-- ? ============== FOOTER ============== ? -->
+
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <img src="/static/images/cabinco.png" alt="Cabinco Logo" width="200px" height="200px"
+              style="margin-top: -100px;">
+
+
+            <p class="footer-text" style="margin-top: -50px;color: black;font-weight: bolder;">
+              At Cabinco, we're dedicated to transforming your journeys into cherished memories. With a commitment to
+              excellence, we're here to provide you with extraordinary travel experiences tailored to your desires. Our
+              team's passion lies in making your every journey seamless and luxurious, ensuring that you arrive not just
+              at your destination, but also in style and comfort.
+            </p>
+        </div>
+
+        <!-- add map -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116196.7035629129!2d54.20770759726563!
+                    3d24.480363500000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e666c4ac147bb%3A0x6ff99f729a902152!2sEtisalat%20-%2
+                    0Airport%20Road%2C%20Abu%20Dhabi!5e0!3m2!1sen!2sae!4v1692973286913!5m2!1sen!2sae" width="500"
+          height="300" style="border:0;max-width: 100%;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <ul class="social-list">
+
+          <li>
+            <a href="yournumber" class="social-link">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="/" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="/" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <!-- <li>
+                  <a href="#" class="social-link">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                  </a>
+                </li>-->
+
+          <!-- <li>
+                  <a href="#" class="social-link">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                  </a>
+                </li> -->
+
+          <li>
+            <a href="mailto:yourmail@gmail.com" class="social-link">
+              <ion-icon name="mail-outline"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="yournumber" class="social-link">
+              <ion-icon name="call-outline"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+        <p class="copyright">
+          &copy; 2023 <a href="/">CabinCo</a>
+          . All Rights Reserved
+        </p>
+
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- ? ==================== CUSTOM JS ==================== ? -->
+
+  <script src="/static/js/script.js"></script>
+  <script src="/static/js/form.js"></script>
+
+  <!-- ? ==================== IONICON ==================== ? -->
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+ <script> window.onload = function () {
+    var preloader = document.querySelector('.preloader');
+    if (preloader) {
+        preloader.style.display = 'none'; // Hide the preloader
+    }
+};
+</script>
+
+</body>
+
+</html>

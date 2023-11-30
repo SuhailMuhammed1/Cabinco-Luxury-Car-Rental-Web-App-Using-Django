@@ -1,0 +1,96 @@
+{% extends 'admin/header.html' %}
+{% block content %}
+<!-- Add a div to contain the background image -->
+<div class="background-image-container">
+  <!-- Content for your page goes here -->
+  <div class="typing-text">
+    <h1>Welcome to CabinCo</h1>
+    <p>Experience Cabinco Your Premium UAE Limousine Partner.</p>
+  </div>
+</div>
+<!-- End of background image container -->
+
+<style>
+  /* CSS for the background image */
+  .background-image-container {
+    /* Set the background image */
+    background-image: url('/static/images/img-01.png');
+    background-size: cover; /* Cover the entire container */
+    background-position: center top; /* Center the background image vertically and position it at the top */
+    background-repeat: no-repeat; /* Prevent repeating the image */
+    width: 100%;
+    height: 100vh; /* 100% of the viewport height */
+    position: relative; /* Required for positioning the typing text */
+  }
+
+  /* Style the content within the container as needed */
+  /* For example, you can add padding and text color */
+  .background-image-container > * {
+    padding: 20px; /* Add padding to center content */
+    color: white; /* Set text color to white */
+  }
+
+  /* CSS for typing text */
+  .typing-text {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center both vertically and horizontally */
+    text-align: center;
+  }
+
+  /* CSS for the typing animation */
+  .typing-text h1 {
+    font-size: 60px;
+    overflow: hidden; /* Hide overflow text */
+    white-space: nowrap; /* Prevent line break */
+    animation: typing 3s steps(40, end), blink-caret 0.5s step-end infinite;
+    color: #d6be83;
+  }
+
+  /* Responsive font size */
+  @media (max-width: 1200px) {
+    .typing-text h1 {
+      font-size: 30px;
+
+    }
+  }
+
+  @media (max-width: 768px) {
+    .typing-text h1 {
+      font-size: 50px;
+
+    }
+  }
+
+  @media (max-width: 480px) {
+    .typing-text h1 {
+      font-size: 30px;
+    }
+  }
+
+  @media (max-width: 330px) {
+    .typing-text h1 {
+      font-size: 30px;
+    }
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink-caret {
+    from, to {
+      border-right-color: transparent;
+    }
+    50% {
+      border-right-color: white;
+    }
+  }
+</style>
+{% endblock %}

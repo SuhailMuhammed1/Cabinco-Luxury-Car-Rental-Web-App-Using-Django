@@ -1,0 +1,105 @@
+{% extends 'admin/header.html' %} {% block content %}
+
+<div class="page-body">
+
+    <!-- New Product Add Start -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-8 m-auto">
+                        {% for msg in messages %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>{{ msg }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-header-2">
+                                    <h5>Car Information</h5>
+                                </div>
+
+                                <form class="theme-form theme-form-2 mega-form" action="/add_car/" method="post"
+                                    enctype="multipart/form-data">
+                                    {% csrf_token %}
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="form-label-title col-sm-3 mb-0">Car
+                                            Name</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" placeholder="Name of Car model"
+                                                name="name" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="form-label-title col-sm-3 mb-0">Seats
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text"
+                                                placeholder="Number of People can sit (eg: 4)" name="people" required
+                                                value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title">Fuel</label>
+                                        <div class="col-sm-9">
+                                            <select class="js-example-basic-single w-100" name="fuel" required>
+                                                <option disabled>Fuel Type</option>
+                                                <option>Diesel</option>
+                                                <option>Electric</option>
+                                                <option>Gasoline</option>
+                                                <option>Petrol</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="form-label-title col-sm-3 mb-0">Miles
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text"
+                                                placeholder="Number of km/l (eg: 20)" name="miles" required value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title">Transmission</label>
+                                        <div class="col-sm-9">
+                                            <select class="js-example-basic-single w-100" name="transmission" required>
+                                                <option disabled>Transmission Type</option>
+                                                <option>Automatic</option>
+                                                <option>Manual</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title">Car Image</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control form-choose" type="file" id="formFile" multiple
+                                                name="image" required>
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <div class="d-inline-flex" style="margin-top: 20px;margin-bottom: 15px;">
+                                            <button type="submit" class="align-items-center btn btn-theme">Add</button>
+                                        </div>
+                                        <div class="d-inline-flex"
+                                            style="margin-top: 20px;margin-bottom: 15px;margin-left: 50px;">
+                                            <a href="/view_car/" class="align-items-center btn btn-theme">Car List</a>
+                                        </div>
+                                    </center>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- New Product Add End -->
+
+    {% endblock %}

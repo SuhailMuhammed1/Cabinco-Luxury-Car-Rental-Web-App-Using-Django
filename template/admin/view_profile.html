@@ -1,0 +1,69 @@
+{% extends 'admin/header.html' %} {% block content %}
+
+<!-- Settings Section Start -->
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- Details Start -->
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="title-header option-title">
+                                    <h5>Admin Profile</h5>
+                                </div>
+                                {% for x in db %}
+                                <form class="theme-form theme-form-2 mega-form" action="" method="post"
+                                    enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="row">
+
+                                        <div class="mb-4 row align-items-center">
+                                            <label class="form-label-title col-sm-2 mb-0"
+                                                style="color: black;">Name</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" type="text" placeholder="Name" name="name"
+                                                    value="{{x.name}}" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4 row align-items-center">
+                                            <label class="form-label-title col-sm-2 mb-0" style="color: black;">Email
+                                                Address</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" type="email" placeholder="Email Address"
+                                                    name="email" value="{{x.email}}" readonly>
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="mb-4 row align-items-center">
+                                            <label class="form-label-title col-sm-2 mb-0"
+                                                style="color: black;">Password</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" type="text" placeholder="Password"
+                                                    name="password" value="{{x.password}}" readonly>
+                                            </div>
+                                        </div> -->
+
+                                        <center>
+                                            <div class="d-inline-flex" style="margin-top: 30px;">
+                                                <a href="/admin_update_profile/?id={{x.id}}"
+                                                    class="align-items-center btn btn-theme d-flex">Edit</a>
+                                                {% endfor %}
+                                            </div>
+                                        </center>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Details End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Settings Section End -->
+
+    {% endblock %}

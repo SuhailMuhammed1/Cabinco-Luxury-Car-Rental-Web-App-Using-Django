@@ -1,0 +1,131 @@
+{% extends 'admin/header.html' %} {% block content %}
+
+<div class="page-body">
+
+    <!-- New Product Add Start -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-8 m-auto">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-header-2">
+                                    <h5>Edit Car Information</h5>
+                                </div>
+                                {% for y in car %}
+                                <form class="theme-form theme-form-2 mega-form" action="/view_update_car/?id={{y.id}}"
+                                    method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="form-label-title col-sm-3 mb-0">Car
+                                            Name</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" placeholder="Name of Car model"
+                                                name="name" required value="{{y.name}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="form-label-title col-sm-3 mb-0">Seats
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text"
+                                                placeholder="Number of People can sit" name="people" required
+                                                value="{{y.people}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title">Fuel</label>
+                                        <div class="col-sm-9">
+                                            <select class="js-example-basic-single w-100" name="fuel">
+                                                <option disabled>Fuel Type</option>
+                                                <option>{{y.fuel}}</option>
+                                                <option>Diesel</option>
+                                                <option>Electric</option>
+                                                <option>Gasoline</option>
+                                                <option>Petrol</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="form-label-title col-sm-3 mb-0">Miles
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text"
+                                                placeholder="Number of Km/L (eg: 20 km)" name="miles" required
+                                                value="{{y.miles}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title">Transmission</label>
+                                        <div class="col-sm-9">
+                                            <select class="js-example-basic-single w-100" name="transmission">
+                                                <option disabled>Transmission Type</option>
+                                                <option>{{y.transmission}}</option>
+                                                <option>Automatic</option>
+                                                <option>Manual</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title" style="align-self: flex-start;padding-bottom: 18px;">Car Image</label>
+                                        <div class="col-sm-9">
+                                            <label class="form-control" style="padding: 8px;background-color: #f9f9f6;border-color: #efefef;margin-bottom: 15px;">
+                                                Do you want to update the image:
+                                                &nbsp;<input type="radio" name="imgupdate1" value="Yes" id="yesRadio">&nbsp; Yes
+                                                &nbsp;
+                                                <input type="radio" name="imgupdate1" value="No" checked id="noRadio">&nbsp; No
+                                                &nbsp;
+                                            </label>
+                                    
+                                            <input class="form-control form-choose" type="file" id="formFile" multiple name="image" value="{{y.image.url}}" style="display: none;">
+                                            <div class="table-image">
+                                                <img src={{y.image.url}} class="img-fluid" alt="" style="margin-top: 15px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        $(document).ready(function() {
+                                            // Initially hide the file upload input
+                                            $("#formFile").hide();
+                                    
+                                            // Add an event listener to the radio buttons
+                                            $("input[name='imgupdate1']").change(function() {
+                                                if ($(this).val() === "Yes") {
+                                                    $("#formFile").show(); // Show the file upload input if "Yes" is selected
+                                                } else {
+                                                    $("#formFile").hide(); // Hide the file upload input if "No" is selected
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                    
+                                    {% endfor %}
+                                    <center>
+                                        <div class="d-inline-flex" style="margin-top: 15px;margin-bottom: 10px;">
+                                            <button type="submit"
+                                                class="align-items-center btn btn-theme">Update</button>
+                                        </div>
+                                        <div class="d-inline-flex"
+                                            style="margin-top: 20px;margin-bottom: 15px;margin-left: 50px;">
+                                            <a href="/view_car/" class="align-items-center btn btn-theme">Car List</a>
+                                        </div>
+                                    </center>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- New Product Add End -->
+
+    {% endblock %}

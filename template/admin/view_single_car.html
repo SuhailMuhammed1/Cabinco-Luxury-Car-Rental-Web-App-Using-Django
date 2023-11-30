@@ -1,0 +1,91 @@
+{% extends 'admin/header.html' %} {% block content %}
+
+<div class="page-body">
+
+    <!-- New Product Add Start -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-8 m-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                {% for y in car %}
+                                <div class="card-header-2">
+                                    <h5>{{y.name}} Details</h5>
+                                </div>
+                                
+                                <form class="theme-form theme-form-2 mega-form" action="" method="post"
+                                    enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="form-label-title col-sm-3 mb-0">Car
+                                            Name</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" placeholder="Name of Car model" name="name" required value="{{y.name}}" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="form-label-title col-sm-3 mb-0">Seats
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" placeholder="Number of People can sit"
+                                                name="people" required value="{{y.people}}" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title">Fuel</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" placeholder="Fuel Type"
+                                                name="fuel" required value="{{y.fuel}}" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="form-label-title col-sm-3 mb-0">Miles
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" placeholder="Number of Km/L (eg: 20 km)"
+                                                name="miles" required value="{{y.miles}}" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title">Transmission</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" placeholder="Transmission Type"
+                                                name="transmission" required value="{{y.transmission}}" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title" style="align-self: flex-start;padding-bottom: 18px;">Car Image</label>                                        
+                                        <div class="col-sm-9">                                                                                                                                    
+                                                <div class="table-image">
+                                                    <img src={{y.image.url}} class="img-fluid" alt="" style="margin-top: 15px;">
+                                                </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <center>
+                                        <div class="d-inline-flex" style="margin-top: 20px;margin-bottom: 15px;">
+                                            <a href="/update_car/?id={{y.id}}" class="align-items-center btn btn-theme">Edit</a>
+                                        </div>
+                                        {% endfor %}
+                                        <div class="d-inline-flex" style="margin-top: 20px;margin-bottom: 15px;margin-left: 50px;">
+                                            <a href="/view_car/" class="align-items-center btn btn-theme">Car List</a>
+                                        </div>
+                                    </center>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- New Product Add End -->
+
+    {% endblock %}

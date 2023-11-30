@@ -1,0 +1,79 @@
+{% extends 'admin/header.html' %} {% block content %}
+
+<!-- Settings Section Start -->
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        {% for msg in messages %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>{{ msg }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                        <!-- Details Start -->
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="title-header option-title">
+                                    <h5>Edit Profile</h5>
+                                </div>
+                                {% for x in db %}
+                                <form class="theme-form theme-form-2 mega-form"
+                                    action="/admin_view_update_profile/?id={{x.id}}" method="post"
+                                    enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="mb-4 row align-items-center">
+                                            <label class="form-label-title col-sm-2 mb-0"
+                                                style="color: black;">Name</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" type="text" placeholder="Name" name="name"
+                                                    value="{{x.name}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4 row align-items-center">
+                                            <label class="form-label-title col-sm-2 mb-0" style="color: black;">Email
+                                                Address</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" type="email" placeholder="Email Address"
+                                                    name="email" value="{{x.email}}">
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="mb-4 row align-items-center">
+                                            <label class="form-label-title col-sm-2 mb-0"
+                                                style="color: black;">Password</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" type="text" placeholder="Password"
+                                                    name="password" value="{{x.password}}">
+                                            </div>
+                                        </div> -->
+
+                                        {% endfor %}
+                                        <center>
+                                            <div class="d-inline-flex" style="margin-top: 20px;margin-bottom: 15px;">
+                                                <button type="submit"
+                                                    class="align-items-center btn btn-theme">Update</button>
+                                            </div>
+                                            <div class="d-inline-flex"
+                                                style="margin-top: 20px;margin-bottom: 15px;margin-left: 50px;">
+                                                <a href="/admin_view_profile/"
+                                                    class="align-items-center btn btn-theme">Profile</a>
+                                            </div>
+                                        </center>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Details End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Settings Section End -->
+
+    {% endblock %}
