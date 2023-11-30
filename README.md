@@ -1,4 +1,4 @@
-# Cabinco
+# Cabinco - Luxury Car Rental Web App Using Django
 
 Welcome to the Cabinco Web App! This project aims to create a user-friendly web application for renting cars from Cabinco.
 
@@ -7,8 +7,10 @@ Welcome to the Cabinco Web App! This project aims to create a user-friendly web 
 - [Project Overview](#project-overview)
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
+- [Technologies Used](#technologies-used)
 - [Features](#features)
 - [Booking Functionality](#booking-functionality)
+- [Screenshots](#screenshots)
 
 ## Project Overview
 
@@ -19,9 +21,8 @@ This web app is being developed for the car rental company "Cabinco." The app wi
 To get started with the project, follow these steps:
 
 1. Clone this repository: `git clone https://github.com/your-username/cabinco-car-rental.git`
-2. Install the required dependencies: `pip install -r requirements.txt`
-3. Set up the Django project: `python manage.py migrate`
-4. Run the development server: `python manage.py runserver`
+2. Set up the Django project: `python manage.py migrate`
+3. Run the development server: `python manage.py runserver`
 
 ## Project Structure
 
@@ -32,6 +33,12 @@ To get started with the project, follow these steps:
 - `appname/urls.py`: Defines URL patterns for routing requests.
 - `appname/forms.py`: Defines forms for user input handling.
 
+### Technologies Used
+
+* Front-end: Html, CSS, JavaScript
+* Back-end: Django
+* Database: MySQL
+  
 ## Features
 
 - Landing Page: Provides an overview of Cabinco's car rental services.
@@ -49,4 +56,6 @@ Users can book cars for rental through the app's booking functionality. Follow t
 5. Submit the booking form.
 6. You will receive a confirmation email with your booking details.
 
+## Screenshots
 
+![cabinco_screenshots](https://github.com/SuhailMuhammed1/Cabinco-Luxury-Car-Rental-Web-App-Using-Django/assets/104970300/efe0fe60-4681-44f6-97a8-2d3985d57442)
