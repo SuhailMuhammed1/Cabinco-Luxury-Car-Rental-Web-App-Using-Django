@@ -1,6 +1,6 @@
 # Cabinco - Luxury Car Rental Web App Using Django
 
-Welcome to the Cabinco Web App! This project aims to create a user-friendly web application for renting cars from Cabinco.
+Welcome to the Cabinco Web App!. This project aims to create a user-friendly web application for renting cars from Cabinco.
 
 ## Table of Contents
 
